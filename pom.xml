@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.framework.cloud</groupId>
+    <artifactId>framework-cloud-pay</artifactId>
+    <version>1.0.0</version>
+    <name>framework-cloud-pay</name>
+
+    <modules>
+        <module>framework-cloud-pay-api</module>
+        <module>framework-cloud-pay-common</module>
+        <module>framework-cloud-pay-domain</module>
+        <module>framework-cloud-pay-infrastructure</module>
+    </modules>
+
+    <properties>
+        <common.framework.cloud.starter.version>1.0.0</common.framework.cloud.starter.version>
+        <mybatis.framework.cloud.starter.version>1.0.0</mybatis.framework.cloud.starter.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.framework.cloud</groupId>
+                <artifactId>pom-framework-cloud-starter</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
