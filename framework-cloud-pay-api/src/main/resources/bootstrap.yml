@@ -35,3 +35,4 @@ spring:
           - {"dataId" : druid.yml, "group" : COMMON, "refresh" : true}
           - {"dataId" : mybatis.yml, "group" : COMMON, "refresh" : true}
           - {"dataId" : feign.yml, "group" : COMMON, "refresh" : true}
+          - {"dataId" : swagger.yml, "group" : COMMON, "refresh" : true}
