@@ -19,6 +19,8 @@
     <properties>
         <common.framework.cloud.starter.version>1.0.0</common.framework.cloud.starter.version>
         <mybatis.framework.cloud.starter.version>1.0.0</mybatis.framework.cloud.starter.version>
+        <cache.framework.cloud.starter.version>1.0.0</cache.framework.cloud.starter.version>
+        <feign.framework.cloud.starter.version>1.0.0</feign.framework.cloud.starter.version>
     </properties>
 
     <dependencyManagement>

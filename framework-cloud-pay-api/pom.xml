@@ -23,13 +23,11 @@
             <groupId>com.framework.cloud</groupId>
             <artifactId>framework-cloud-pay-infrastructure</artifactId>
             <version>${version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.framework.cloud</groupId>
             <artifactId>dependencies-framework-cloud-starter</artifactId>
             <version>${version}</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
