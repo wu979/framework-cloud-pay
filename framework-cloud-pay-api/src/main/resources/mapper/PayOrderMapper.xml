@@ -5,9 +5,10 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.framework.cloud.pay.domain.entity.PayOrder">
         <id column="id" property="id"/>
-        <result column="num" property="num"/>
         <result column="business_id" property="businessId"/>
+        <result column="num" property="num"/>
         <result column="order_amount" property="orderAmount"/>
+        <result column="status" property="status"/>
         <result column="remarks" property="remarks"/>
         <result column="tenant_id" property="tenantId"/>
         <result column="create_id" property="createId"/>
@@ -20,7 +21,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        po.id, po.num, po.business_id, po.order_amount, po.remarks , po.tenant_id, po.create_id, po.update_id, po.create_time, po.update_time, po.deleted, po.version
+        po.id, po.business_id, po.num, po.order_amount, po.status, po.remarks , po.tenant_id, po.create_id, po.update_id, po.create_time, po.update_time, po.deleted, po.version
     </sql>
 
     <select id="page" resultType="com.framework.cloud.pay.common.vo.PayOrderPageVO">
@@ -29,4 +30,5 @@
         from t_pay_order po
         where po.deleted = 1
     </select>
+
 </mapper>

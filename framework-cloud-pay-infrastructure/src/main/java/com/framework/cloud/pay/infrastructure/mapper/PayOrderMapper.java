@@ -3,8 +3,8 @@ package com.framework.cloud.pay.infrastructure.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.framework.cloud.pay.common.vo.*;
-import com.framework.cloud.pay.common.dto.*;
+import com.framework.cloud.pay.common.dto.PayOrderPageDTO;
+import com.framework.cloud.pay.common.vo.PayOrderPageVO;
 import com.framework.cloud.pay.domain.entity.PayOrder;
 import org.apache.ibatis.annotations.Param;
 

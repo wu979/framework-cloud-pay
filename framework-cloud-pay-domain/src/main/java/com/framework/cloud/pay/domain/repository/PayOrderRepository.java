@@ -2,8 +2,9 @@ package com.framework.cloud.pay.domain.repository;
 
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.mybatis.repository.BaseRepository;
-import com.framework.cloud.pay.common.vo.*;
-import com.framework.cloud.pay.common.dto.*;
+import com.framework.cloud.pay.common.dto.PayOrderPageDTO;
+import com.framework.cloud.pay.common.vo.PayOrderInfoVO;
+import com.framework.cloud.pay.common.vo.PayOrderPageVO;
 import com.framework.cloud.pay.domain.entity.PayOrder;
 
 /**
