@@ -23,6 +23,7 @@
         <feign.framework.cloud.starter.version>1.0.0</feign.framework.cloud.starter.version>
         <swagger.framework.cloud.starter.version>1.0.0</swagger.framework.cloud.starter.version>
         <executors.framework.cloud.starter.version>1.0.0</executors.framework.cloud.starter.version>
+        <enums.framework.cloud.starter.version>1.0.0</enums.framework.cloud.starter.version>
     </properties>
 
     <dependencyManagement>

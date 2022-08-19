@@ -1,11 +1,8 @@
 package com.framework.cloud.pay.api.controller;
 
 import com.framework.cloud.common.base.PageVO;
-import com.framework.cloud.common.group.Save;
-import com.framework.cloud.common.group.Update;
 import com.framework.cloud.common.result.R;
 import com.framework.cloud.common.result.Result;
-import com.framework.cloud.pay.common.dto.PayOrderDTO;
 import com.framework.cloud.pay.common.dto.PayOrderPageDTO;
 import com.framework.cloud.pay.common.vo.PayOrderInfoVO;
 import com.framework.cloud.pay.common.vo.PayOrderPageVO;
@@ -14,11 +11,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -52,18 +47,6 @@ public class PayOrderController {
     @GetMapping(value = "/total")
     public Result<BigDecimal> total() {
         return R.success(payOrderService.total());
-    }
-
-    @ApiOperation(value = "支付订单新增")
-    @PostMapping(value = "/save")
-    public Result<Boolean> save(@ApiParam("支付订单") @Valid @Validated(Save.class) @RequestBody PayOrderDTO param) {
-        return R.success(payOrderService.save(param));
-    }
-
-    @ApiOperation(value = "支付订单修改")
-    @PostMapping(value = "/update")
-    public Result<Boolean> update(@ApiParam("支付订单") @Valid @Validated(Update.class) @RequestBody PayOrderDTO param) {
-        return R.success(payOrderService.update(param));
     }
 
     @ApiOperation(value = "支付订单删除")
