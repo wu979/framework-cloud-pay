@@ -6,6 +6,7 @@ import com.framework.cloud.pay.common.dto.PayOrderPageDTO;
 import com.framework.cloud.pay.common.vo.PayOrderInfoVO;
 import com.framework.cloud.pay.common.vo.PayOrderPageVO;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -29,6 +30,13 @@ public interface PayOrderService {
      * @return 详情
      */
     PayOrderInfoVO info(Long id);
+
+    /**
+     * 统计
+     *
+     * @return 金额
+     */
+    BigDecimal total();
 
     /**
      * 新增

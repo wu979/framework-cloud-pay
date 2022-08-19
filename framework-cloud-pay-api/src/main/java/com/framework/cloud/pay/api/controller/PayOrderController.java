@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -45,6 +46,12 @@ public class PayOrderController {
     @GetMapping(value = "/{id}/info")
     public Result<PayOrderInfoVO> info(@ApiParam("主键") @PathVariable("id") Long id) {
         return R.success(payOrderService.info(id));
+    }
+
+    @ApiOperation(value = "支付订单统计")
+    @GetMapping(value = "/total")
+    public Result<BigDecimal> total() {
+        return R.success(payOrderService.total());
     }
 
     @ApiOperation(value = "支付订单新增")

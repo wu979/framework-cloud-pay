@@ -31,4 +31,10 @@
         where po.deleted = 1
     </select>
 
+    <select id="total" resultType="java.math.BigDecimal">
+        select
+            sum(po.order_amount)
+        from t_pay_order po
+        where po.deleted = 1
+    </select>
 </mapper>

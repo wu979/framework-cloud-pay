@@ -15,6 +15,8 @@ import com.framework.cloud.pay.infrastructure.mapper.PayOrderMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+
 /**
  * 支付订单 数据实现层
  *
@@ -37,5 +39,10 @@ public class PayOrderRepositoryImpl extends BaseRepositoryImpl<PayOrderMapper, P
     public PayOrderInfoVO info(Long id) {
         PayOrder payOrder = this.getById(id);
         return payOrderConverter.info(payOrder);
+    }
+
+    @Override
+    public BigDecimal total() {
+        return this.baseMapper.total();
     }
 }

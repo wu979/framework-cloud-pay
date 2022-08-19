@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.framework.cloud.common.base.BaseTenant;
-import com.framework.cloud.mybatis.annotation.LongToBigDecimal;
 import com.framework.cloud.pay.common.enums.PayStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -39,8 +38,7 @@ public class PayOrder extends BaseTenant {
     
     @ApiModelProperty(value = "支付订单号")
     private String num;
-    
-    @LongToBigDecimal
+
     @ApiModelProperty(value = "订单金额")
     private BigDecimal orderAmount;
     

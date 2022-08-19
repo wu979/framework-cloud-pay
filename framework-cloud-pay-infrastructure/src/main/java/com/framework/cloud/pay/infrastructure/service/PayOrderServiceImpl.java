@@ -37,6 +37,11 @@ public class PayOrderServiceImpl implements PayOrderService {
     }
 
     @Override
+    public BigDecimal total() {
+        return payOrderRepository.total();
+    }
+
+    @Override
     public boolean save(PayOrderDTO param) {
         PayOrder payOrder = new PayOrder();
         CopierUtil.copyProperties(param, payOrder);
