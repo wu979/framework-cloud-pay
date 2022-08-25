@@ -1,10 +1,8 @@
 package com.framework.cloud.pay.infrastructure.converter;
 
-import com.framework.cloud.pay.common.vo.*;
+import com.framework.cloud.pay.common.vo.order.PayOrderInfoVO;
 import com.framework.cloud.pay.domain.entity.PayOrder;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 
 /**
  * 支付订单 转换器

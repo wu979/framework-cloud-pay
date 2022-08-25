@@ -1,13 +1,10 @@
 package com.framework.cloud.pay.domain.service;
 
 import com.framework.cloud.common.base.PageVO;
-import com.framework.cloud.pay.common.dto.PayOrderDTO;
-import com.framework.cloud.pay.common.dto.PayOrderPageDTO;
-import com.framework.cloud.pay.common.vo.PayOrderInfoVO;
-import com.framework.cloud.pay.common.vo.PayOrderPageVO;
-
-import java.math.BigDecimal;
-import java.util.List;
+import com.framework.cloud.pay.common.dto.order.PayOrderDTO;
+import com.framework.cloud.pay.common.dto.order.PayOrderPageDTO;
+import com.framework.cloud.pay.common.vo.order.PayOrderInfoVO;
+import com.framework.cloud.pay.common.vo.order.PayOrderPageVO;
 
 /**
  * 支付订单 服务层接口
@@ -32,34 +29,11 @@ public interface PayOrderService {
     PayOrderInfoVO info(Long id);
 
     /**
-     * 统计
-     *
-     * @return 金额
-     */
-    BigDecimal total();
-
-    /**
      * 新增
      *
      * @param param 新增参数
      * @return bool
      */
     boolean save(PayOrderDTO param);
-
-    /**
-    * 修改
-    *
-    * @param param 修改参数
-    * @return bool
-    */
-    boolean update(PayOrderDTO param);
-
-    /**
-     * 删除
-     *
-     * @param ids 主键
-     * @return bool
-     */
-    boolean removes(List<Long> ids);
 
 }

@@ -2,12 +2,10 @@ package com.framework.cloud.pay.domain.repository;
 
 import com.framework.cloud.common.base.PageVO;
 import com.framework.cloud.mybatis.repository.BaseRepository;
-import com.framework.cloud.pay.common.dto.PayOrderPageDTO;
-import com.framework.cloud.pay.common.vo.PayOrderInfoVO;
-import com.framework.cloud.pay.common.vo.PayOrderPageVO;
+import com.framework.cloud.pay.common.dto.order.PayOrderPageDTO;
+import com.framework.cloud.pay.common.vo.order.PayOrderInfoVO;
+import com.framework.cloud.pay.common.vo.order.PayOrderPageVO;
 import com.framework.cloud.pay.domain.entity.PayOrder;
-
-import java.math.BigDecimal;
 
 /**
  * 支付订单 数据层接口
@@ -31,12 +29,5 @@ public interface PayOrderRepository extends BaseRepository<PayOrder> {
      * @return 详情
      */
     PayOrderInfoVO info(Long id);
-
-    /**
-     * 统计
-     *
-     * @return 金额
-     */
-    BigDecimal total();
 
 }

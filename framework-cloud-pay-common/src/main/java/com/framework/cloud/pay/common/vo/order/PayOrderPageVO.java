@@ -1,4 +1,4 @@
-package com.framework.cloud.pay.common.vo;
+package com.framework.cloud.pay.common.vo.order;
 
 import com.framework.cloud.common.base.BaseVO;
 import lombok.Data;
