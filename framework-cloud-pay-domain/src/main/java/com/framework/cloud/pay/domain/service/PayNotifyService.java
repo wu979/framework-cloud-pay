@@ -4,7 +4,7 @@ import com.framework.cloud.pay.common.dto.order.PayNotifyDTO;
 import com.framework.cloud.pay.common.vo.order.PayNotifyInfoVO;
 
 /**
- *  服务层接口
+ * 支付回调 服务层接口
  *
  * @author wusiwei
  */

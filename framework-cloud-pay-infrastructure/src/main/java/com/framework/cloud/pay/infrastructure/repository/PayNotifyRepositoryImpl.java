@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 /**
- *  数据实现层
+ * 支付回调 数据实现层
  *
  * @author wusiwei
  */

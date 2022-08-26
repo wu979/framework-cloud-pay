@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 支付宝 支付父类DTO
+ * 支付宝 父类
  *
  * @author wusiwei
  */

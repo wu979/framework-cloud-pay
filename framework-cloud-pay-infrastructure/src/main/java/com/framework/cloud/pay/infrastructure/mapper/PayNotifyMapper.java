@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.framework.cloud.pay.domain.entity.PayNotify;
 
 /**
- *  数据库接口
+ * 支付回调 数据库接口
  *
  * @author wusiwei
  */

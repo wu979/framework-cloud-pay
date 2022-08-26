@@ -1,16 +1,18 @@
 package com.framework.cloud.pay.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.framework.cloud.common.base.BaseTenant;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import com.framework.cloud.mybatis.annotation.LongToBigDecimal;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
- *  实体
+ * 支付回调 实体
  *
  * @author wusiwei
  */
@@ -19,7 +21,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_pay_notify")
-@ApiModel(value="对象", description="")
+@ApiModel(value="支付回调对象", description="支付回调")
 public class PayNotify extends BaseTenant {
 
     private static final long serialVersionUID = 1L;

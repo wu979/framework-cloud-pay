@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 银联 支付父类DTO
+ * 银联 父类
  *
  * @author wusiwei
  */

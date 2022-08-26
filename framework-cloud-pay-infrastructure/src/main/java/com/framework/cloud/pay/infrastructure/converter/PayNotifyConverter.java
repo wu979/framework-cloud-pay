@@ -5,7 +5,7 @@ import com.framework.cloud.pay.domain.entity.PayNotify;
 import org.mapstruct.Mapper;
 
 /**
- *  转换器
+ * 支付回调 转换器
  *
  * @author wusiwei
  */

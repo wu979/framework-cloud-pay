@@ -1,22 +1,24 @@
 package com.framework.cloud.pay.common.dto.pay;
 
+import com.framework.cloud.enums.platform.PayChannelType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 微信 支付父类DTO
+ * 微信 父类
  *
  * @author wusiwei
  */
 @Data
-public class PayWxDTO implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
+public abstract class PayWxDTO extends PayDTO {
     private static final long serialVersionUID = -7153752520751883671L;
 
     @NotEmpty(message = "业务订单号必填!")
@@ -57,6 +59,10 @@ public class PayWxDTO implements Serializable {
     @ApiModelProperty(value = "结算信息")
     private DiscountDetailDTO settleInfo;
 
+    @Override
+    public PayChannelType getPayChannelType() {
+        return PayChannelType.WX;
+    }
 
     @Data
     @ApiModel("微信支付-金额参数")
