@@ -1,8 +1,6 @@
 package com.framework.cloud.pay.infrastructure.service.wx;
-import cn.hutool.core.lang.Pair;
 import com.framework.cloud.common.result.ResultApi;
 import com.framework.cloud.enums.pay.PayStatus;
-
 import com.framework.cloud.pay.common.dto.pay.wx.PayWxAppDTO;
 import com.framework.cloud.pay.common.model.request.PayWxAppRequest;
 import com.framework.cloud.pay.common.model.response.PayWxAppResponse;
@@ -20,11 +18,6 @@ import org.springframework.stereotype.Service;
  */
 @Service("WX_APP")
 public class PayWxAppServiceImpl extends AbstractPayWxService<PayWxAppVO, PayWxAppDTO, PayWxAppRequest, PayWxAppResponse> {
-
-    @Override
-    protected Pair<Integer, String> check(PayModeInfoVO modeInfo, PayWxAppDTO param) {
-        return null;
-    }
 
     @Override
     protected PayWxAppRequest request(PayModeInfoVO modeInfo, PayWxAppDTO param) {

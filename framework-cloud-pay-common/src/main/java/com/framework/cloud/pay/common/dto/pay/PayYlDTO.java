@@ -2,6 +2,7 @@ package com.framework.cloud.pay.common.dto.pay;
 
 import com.framework.cloud.enums.platform.PayChannelType;
 import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 /**
  * 银联 父类
@@ -10,6 +11,7 @@ import lombok.*;
  */
 @Setter
 @Getter
+@FieldNameConstants
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor

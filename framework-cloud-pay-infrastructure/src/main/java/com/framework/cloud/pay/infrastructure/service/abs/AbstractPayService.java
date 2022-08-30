@@ -1,8 +1,8 @@
 package com.framework.cloud.pay.infrastructure.service.abs;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Pair;
 import cn.hutool.core.util.ObjectUtil;
-import com.framework.cloud.common.enums.GlobalMessage;
 import com.framework.cloud.common.exception.BizException;
 import com.framework.cloud.common.result.Result;
 import com.framework.cloud.common.result.ResultApi;
@@ -27,6 +27,8 @@ import javax.annotation.Resource;
  */
 public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQUEST, RESPONSE> implements PayService<R, T> {
 
+    private static final int OVER_TIME = 5 * 60;
+
     @Resource
     private PlatFormFeignService platFormFeignService;
 
@@ -35,6 +37,8 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
 
     @Override
     public R pay(T param) {
+        long differ = DateUtil.betweenMs(DateUtil.date(param.getOrderTime()), DateUtil.date()) / 1000;
+        AssertUtil.isFalse(OVER_TIME - differ < 0, PayMsg.PAY_OVER_TIME.getMsg());
         Result<PayModeInfoVO> modeResult = platFormFeignService.modeInfo(param.getModeId());
         AssertUtil.isTrue(modeResult.success(), modeResult);
         PayModeInfoVO modeInfo = modeResult.getData();
@@ -47,19 +51,19 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
         if (null != check) {
             throw new BizException(check.getKey(), check.getValue());
         }
+        boolean sign = sign(channelInfo, param);
+        AssertUtil.isTrue(sign, PayMsg.ILLEGAL_SIGNATURE.getMsg());
         REQUEST request = request(modeInfo, param);
         ResultApi<RESPONSE> pay;
         try {
             pay = tradePay(channelInfo, request);
         } catch (Exception e) {
-            pay = new ResultApi<>(GlobalMessage.THIRD_PARTY_CONNECTION_FAILED.getMsg());
+            pay = new ResultApi<>(PayMsg.CREATE_PAY_ORDER_FAIL.getMsg());
         }
-        PayOrder payOrder;
         if (!pay.getCall() || ObjectUtil.isNull(pay.getData())) {
-            payOrder = payOrder(param);
-        } else {
-            payOrder = payOrder(request, pay.getData());
+            throw new BizException(pay.getMsg());
         }
+        PayOrder payOrder = payOrder(request, pay.getData());
         boolean save = payOrderRepository.save(payOrder);
         if (!save) {
             throw new BizException(PayMsg.CREATE_PAY_ORDER_FAIL.getMsg());
@@ -73,9 +77,17 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
      *
      * @param modeInfo 支付方式
      * @param param 支付参数
-     * @return null
+     * @return 错误消息
      */
     protected abstract Pair<Integer, String> check(PayModeInfoVO modeInfo, T param);
+
+    /**
+     * 签名
+     *
+     * @param param 请求参数
+     * @return bool
+     */
+    protected abstract boolean sign(PayChannelInfoVO channelInfo, T param);
 
     /**
      * 支付参数
@@ -98,14 +110,6 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
     /**
      * 支付订单
      *
-     * @param param 请求参数
-     * @return 订单
-     */
-    protected abstract PayOrder payOrder(T param);
-
-    /**
-     * 支付订单
-     *
      * @param request 支付参数
      * @param response 支付结果
      * @return 订单
@@ -113,12 +117,12 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
     protected abstract PayOrder payOrder(REQUEST request, RESPONSE response);
 
     /**
-     * 返回
+     * 支付结果
      *
      * @param orderNo 业务订单号
      * @param payNo 支付订单号
      * @param status 支付状态
-     * @return 返回体
+     * @return 结果
      */
     protected abstract R result(String orderNo, String payNo, PayStatus status);
 

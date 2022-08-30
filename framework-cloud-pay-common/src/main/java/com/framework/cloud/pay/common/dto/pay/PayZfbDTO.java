@@ -4,6 +4,7 @@ import com.framework.cloud.enums.platform.PayChannelType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -17,15 +18,12 @@ import java.util.List;
  */
 @Setter
 @Getter
+@FieldNameConstants
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
 public abstract class PayZfbDTO extends PayDTO {
     private static final long serialVersionUID = 9103355160992331664L;
-
-    @NotEmpty(message = "业务订单号必填!")
-    @ApiModelProperty(value = "业务订单号")
-    private String orderNo;
 
     @NotNull(message = "订单总金额必填!")
     @DecimalMin(value = "0", message = "订单总金额必须为正数")

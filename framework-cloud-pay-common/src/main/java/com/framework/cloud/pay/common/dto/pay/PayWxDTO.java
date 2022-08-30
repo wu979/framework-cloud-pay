@@ -4,6 +4,7 @@ import com.framework.cloud.enums.platform.PayChannelType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -17,15 +18,12 @@ import java.util.List;
  */
 @Setter
 @Getter
+@FieldNameConstants
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
 public abstract class PayWxDTO extends PayDTO {
     private static final long serialVersionUID = -7153752520751883671L;
-
-    @NotEmpty(message = "业务订单号必填!")
-    @ApiModelProperty(value = "业务订单号")
-    private String orderNo;
 
     @NotEmpty(message = "商品描述必填!")
     @ApiModelProperty(value = "商品描述")
@@ -67,6 +65,7 @@ public abstract class PayWxDTO extends PayDTO {
     }
 
     @Data
+    @FieldNameConstants
     @ApiModel("微信支付-金额参数")
     public static class AmountDTO {
 
