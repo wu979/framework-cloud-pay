@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_pay_notify")
-@ApiModel(value="支付回调对象", description="支付回调")
+@ApiModel(value = "支付回调对象", description = "支付回调")
 public class PayNotify extends BaseTenant {
 
     private static final long serialVersionUID = 1L;

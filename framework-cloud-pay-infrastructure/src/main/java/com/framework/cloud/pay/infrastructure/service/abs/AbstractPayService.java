@@ -76,7 +76,7 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
      * 检查
      *
      * @param modeInfo 支付方式
-     * @param param 支付参数
+     * @param param    支付参数
      * @return 错误消息
      */
     protected abstract Pair<Integer, String> check(PayModeInfoVO modeInfo, T param);
@@ -93,7 +93,7 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
      * 支付参数
      *
      * @param modeInfo 支付方式
-     * @param param 请求参数
+     * @param param    请求参数
      * @return 支付参数
      */
     protected abstract REQUEST request(PayModeInfoVO modeInfo, T param);
@@ -102,7 +102,7 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
      * 统一支付
      *
      * @param channelInfo 支付渠道
-     * @param request 支付参数
+     * @param request     支付参数
      * @return 支付结果
      */
     protected abstract ResultApi<RESPONSE> tradePay(PayChannelInfoVO channelInfo, REQUEST request) throws Exception;
@@ -110,7 +110,7 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
     /**
      * 支付订单
      *
-     * @param request 支付参数
+     * @param request  支付参数
      * @param response 支付结果
      * @return 订单
      */
@@ -120,8 +120,8 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
      * 支付结果
      *
      * @param orderNo 业务订单号
-     * @param payNo 支付订单号
-     * @param status 支付状态
+     * @param payNo   支付订单号
+     * @param status  支付状态
      * @return 结果
      */
     protected abstract R result(String orderNo, String payNo, PayStatus status);

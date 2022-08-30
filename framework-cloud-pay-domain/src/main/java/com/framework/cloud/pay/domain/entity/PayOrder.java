@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_pay_order")
-@ApiModel(value="支付订单对象", description="支付订单")
+@ApiModel(value = "支付订单对象", description = "支付订单")
 public class PayOrder extends BaseTenant {
 
     private static final long serialVersionUID = 1L;

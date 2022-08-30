@@ -13,7 +13,7 @@ import org.mapstruct.Mapper;
 public interface PayNotifyConverter {
 
     /**
-     *  详情转换
+     * 详情转换
      *
      * @param payNotify 实体
      * @return 详情

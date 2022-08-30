@@ -11,6 +11,6 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class PayWxMicropayVO  extends PayWxVO {
+public class PayWxMicropayVO extends PayWxVO {
     private static final long serialVersionUID = -2108278285215429107L;
 }

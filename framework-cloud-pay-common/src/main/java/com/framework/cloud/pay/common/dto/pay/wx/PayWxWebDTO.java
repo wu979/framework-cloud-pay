@@ -14,7 +14,7 @@ import lombok.*;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
-public class PayWxWebDTO  extends PayWxDTO {
+public class PayWxWebDTO extends PayWxDTO {
     private static final long serialVersionUID = -2436707533695062376L;
 
     @Override

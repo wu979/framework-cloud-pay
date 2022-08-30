@@ -27,7 +27,7 @@ public class OrderTimePreciseShardingAlgorithm implements StandardShardingAlgori
 
     @Override
     public String doSharding(Collection<String> targetNames, PreciseShardingValue<Long> shardingValue) {
-        String yearMonth ;
+        String yearMonth;
         DateTime date = DateUtil.date(shardingValue.getValue());
         int month = DateUtil.month(date) + 1;
         if (month < GlobalNumber.TEN.getIntValue()) {
