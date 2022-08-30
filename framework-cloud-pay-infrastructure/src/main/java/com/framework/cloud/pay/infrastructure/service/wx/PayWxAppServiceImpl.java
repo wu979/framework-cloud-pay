@@ -1,10 +1,15 @@
 package com.framework.cloud.pay.infrastructure.service.wx;
+import cn.hutool.core.lang.Pair;
+import com.framework.cloud.common.result.ResultApi;
 import com.framework.cloud.enums.pay.PayStatus;
 
 import com.framework.cloud.pay.common.dto.pay.wx.PayWxAppDTO;
 import com.framework.cloud.pay.common.model.request.PayWxAppRequest;
 import com.framework.cloud.pay.common.model.response.PayWxAppResponse;
+import com.framework.cloud.pay.common.rpc.PayChannelInfoVO;
+import com.framework.cloud.pay.common.rpc.PayModeInfoVO;
 import com.framework.cloud.pay.common.vo.pay.wx.PayWxAppVO;
+import com.framework.cloud.pay.domain.entity.PayOrder;
 import com.framework.cloud.pay.infrastructure.service.abs.AbstractPayWxService;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +22,27 @@ import org.springframework.stereotype.Service;
 public class PayWxAppServiceImpl extends AbstractPayWxService<PayWxAppVO, PayWxAppDTO, PayWxAppRequest, PayWxAppResponse> {
 
     @Override
-    protected PayWxAppVO result() {
-        PayWxAppVO vo = new PayWxAppVO();
-        vo.setOrderNo("1");
-        vo.setPayNo("2");
-        vo.setStatus(PayStatus.WAIT_PAY);
-        return vo;
+    protected Pair<Integer, String> check(PayModeInfoVO modeInfo, PayWxAppDTO param) {
+        return null;
+    }
+
+    @Override
+    protected PayWxAppRequest request(PayModeInfoVO modeInfo, PayWxAppDTO param) {
+        return null;
+    }
+
+    @Override
+    protected ResultApi<PayWxAppResponse> tradePay(PayChannelInfoVO channelInfo, PayWxAppRequest payWxAppRequest) throws Exception {
+        return null;
+    }
+
+    @Override
+    protected PayOrder payOrder(PayWxAppRequest payWxAppRequest, PayWxAppResponse payWxAppResponse) {
+        return null;
+    }
+
+    @Override
+    protected PayWxAppVO result(String orderNo, String payNo, PayStatus status) {
+        return null;
     }
 }

@@ -1,15 +1,23 @@
 package com.framework.cloud.pay.common.dto.pay;
 
-import lombok.Data;
-
-import java.io.Serializable;
+import com.framework.cloud.enums.platform.PayChannelType;
+import lombok.*;
 
 /**
  * 银联 父类
  *
  * @author wusiwei
  */
-@Data
-public class PayYlDTO implements Serializable {
+@Setter
+@Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
+public abstract class PayYlDTO extends PayDTO {
     private static final long serialVersionUID = -3618488446155651478L;
+
+    @Override
+    public PayChannelType getPayChannelType() {
+        return PayChannelType.YL;
+    }
 }

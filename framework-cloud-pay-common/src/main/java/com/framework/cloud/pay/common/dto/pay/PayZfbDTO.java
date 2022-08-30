@@ -1,12 +1,12 @@
 package com.framework.cloud.pay.common.dto.pay;
 
+import com.framework.cloud.enums.platform.PayChannelType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -15,8 +15,12 @@ import java.util.List;
  *
  * @author wusiwei
  */
-@Data
-public class PayZfbDTO implements Serializable {
+@Setter
+@Getter
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
+public abstract class PayZfbDTO extends PayDTO {
     private static final long serialVersionUID = 9103355160992331664L;
 
     @NotEmpty(message = "业务订单号必填!")
@@ -43,6 +47,10 @@ public class PayZfbDTO implements Serializable {
     @ApiModelProperty(value = "商品详情信息")
     private List<GoodsDetailDTO> goodsDetail;
 
+    @Override
+    public PayChannelType getPayChannelType() {
+        return PayChannelType.ZFB;
+    }
 
     @Data
     @ApiModel("支付宝支付-商品列表参数")

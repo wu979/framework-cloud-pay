@@ -15,7 +15,9 @@ import java.util.List;
  *
  * @author wusiwei
  */
-@Data
+@Setter
+@Getter
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
 public abstract class PayWxDTO extends PayDTO {
