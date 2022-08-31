@@ -51,6 +51,9 @@ public class PayOrder extends BaseTenant {
     @ApiModelProperty(value = "支付完成时间")
     private LocalDateTime successTime;
 
+    @ApiModelProperty(value = "回调地址")
+    private String callbackUrl;
+
     @TableField("`status`")
     @ApiModelProperty(value = "支付状态")
     private PayStatus status;
@@ -58,6 +61,9 @@ public class PayOrder extends BaseTenant {
     @TableField("`type`")
     @ApiModelProperty(value = "支付类型")
     private PayModeType type;
+
+    @ApiModelProperty(value = "支付方式id")
+    private Long modeId;
 
     @ApiModelProperty(value = "微信支付订单号")
     private String tradeId;

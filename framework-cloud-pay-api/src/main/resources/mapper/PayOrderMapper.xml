@@ -10,8 +10,10 @@
         <result column="order_amount" property="orderAmount"/>
         <result column="pay_amount" property="payAmount"/>
         <result column="success_time" property="successTime"/>
+        <result column="callback_url" property="callbackUrl"/>
         <result column="status" property="status"/>
         <result column="type" property="type"/>
+        <result column="mode_id" property="modeId"/>
         <result column="trade_id" property="tradeId"/>
         <result column="trade_status" property="tradeStatus"/>
         <result column="remarks" property="remarks"/>
@@ -26,7 +28,8 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        po.id, po.num, po.order_num, po.order_amount, po.pay_amount, po.success_time, po.`status`, po.`type`, po.trade_id, po.trade_status, po.remarks , po.tenant_id, po.create_id, po.update_id, po.create_time, po.update_time, po.deleted, po.version
+        po.id, po.num, po.order_num, po.order_amount, po.pay_amount, po.success_time, po.callback_url, po.`status`, po.`type`, po.mode_id,
+        po.trade_id, po.trade_status, po.remarks , po.tenant_id, po.create_id, po.update_id, po.create_time, po.update_time, po.deleted, po.version
     </sql>
 
     <select id="page" resultType="com.framework.cloud.pay.common.vo.order.PayOrderPageVO">

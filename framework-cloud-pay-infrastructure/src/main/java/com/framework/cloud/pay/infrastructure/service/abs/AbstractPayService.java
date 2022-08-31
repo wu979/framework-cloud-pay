@@ -64,6 +64,8 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
             throw new BizException(pay.getMsg());
         }
         PayOrder payOrder = payOrder(request, pay.getData());
+        payOrder.setCallbackUrl(param.getCallbackUrl());
+        payOrder.setModeId(modeInfo.getId());
         boolean save = payOrderRepository.save(payOrder);
         if (!save) {
             throw new BizException(PayMsg.CREATE_PAY_ORDER_FAIL.getMsg());

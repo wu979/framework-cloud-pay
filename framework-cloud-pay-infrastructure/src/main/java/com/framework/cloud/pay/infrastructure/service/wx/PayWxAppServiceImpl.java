@@ -22,21 +22,21 @@ public class PayWxAppServiceImpl extends AbstractPayWxService<PayWxAppVO, PayWxA
 
     @Override
     protected PayWxAppRequest request(PayModeInfoVO modeInfo, PayWxAppDTO param) {
-        return null;
+        return new PayWxAppRequest();
     }
 
     @Override
     protected ResultApi<PayWxAppResponse> tradePay(PayChannelInfoVO channelInfo, PayWxAppRequest payWxAppRequest) throws Exception {
-        return null;
+        return new ResultApi<PayWxAppResponse>(true, 200, "");
     }
 
     @Override
     protected PayOrder payOrder(PayWxAppRequest payWxAppRequest, PayWxAppResponse payWxAppResponse) {
-        return null;
+        return new PayOrder();
     }
 
     @Override
     protected PayWxAppVO result(String orderNo, String payNo, PayStatus status) {
-        return null;
+        return new PayWxAppVO();
     }
 }
