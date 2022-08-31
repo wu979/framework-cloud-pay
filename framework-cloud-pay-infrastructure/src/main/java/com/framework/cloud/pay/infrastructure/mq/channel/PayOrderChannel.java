@@ -1,7 +1,9 @@
 package com.framework.cloud.pay.infrastructure.mq.channel;
 
+import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.SubscribableChannel;
 
 /**
  * 支付订单 领域事件
@@ -10,13 +12,13 @@ import org.springframework.messaging.MessageChannel;
  */
 public interface PayOrderChannel {
 
-    String OUT = "pay-order-channel-output";
+    String OUT = "pay-order-ouput-channel";
 
     @Output(OUT)
     MessageChannel output();
 
-    String IN = "pay-order-channel-input";
+    String IN = "pay-order-input-channel";
 
-    @Output(IN)
-    MessageChannel input();
+    @Input(IN)
+    SubscribableChannel input();
 }

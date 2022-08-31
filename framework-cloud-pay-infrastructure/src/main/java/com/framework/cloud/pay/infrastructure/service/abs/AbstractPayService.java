@@ -17,6 +17,7 @@ import com.framework.cloud.pay.domain.entity.PayOrder;
 import com.framework.cloud.pay.domain.feign.PlatFormFeignService;
 import com.framework.cloud.pay.domain.repository.PayOrderRepository;
 import com.framework.cloud.pay.domain.service.PayService;
+import com.framework.cloud.pay.infrastructure.mq.PayPublish;
 
 import javax.annotation.Resource;
 
@@ -28,6 +29,9 @@ import javax.annotation.Resource;
 public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQUEST, RESPONSE> implements PayService<R, T> {
 
     private static final int OVER_TIME = 5 * 60;
+
+    @Resource
+    private PayPublish payPublish;
 
     @Resource
     private PlatFormFeignService platFormFeignService;
@@ -70,7 +74,10 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
         if (!save) {
             throw new BizException(PayMsg.CREATE_PAY_ORDER_FAIL.getMsg());
         }
-        // todo 订单延迟队列（半小时验证订单是否已支付）
+        boolean publish = payPublish.publishPayOrder(payOrder.getNum());
+        if (!publish) {
+            // todo redis 队列
+        }
         return result(payOrder.getOrderNum(), payOrder.getNum(), payOrder.getStatus());
     }
 

@@ -44,12 +44,4 @@ public class PayOrderController {
     public Result<PayOrderInfoVO> info(@ApiParam("主键") @PathVariable("id") Long id) {
         return R.success(payOrderService.info(id));
     }
-
-    @ApiOperation(value = "支付订单详情")
-    @GetMapping(value = "/publish")
-    public Result<Boolean> publish() {
-        boolean b = payPublish.publishPayOrder("1111111");
-        System.out.println(b);
-        return R.success(true);
-    }
 }
