@@ -39,8 +39,10 @@
                 <includes>
                     <include>*.yml</include>
                     <include>*.properties</include>
+                    <include>logback-spring.xml</include>
                     <include>mapper/*.xml</include>
                     <include>META-INF/spring.factories</include>
+                    <include>seata.conf</include>
                 </includes>
                 <filtering>true</filtering>
             </resource>
