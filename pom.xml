@@ -17,6 +17,8 @@
     </modules>
 
     <properties>
+        <datasource.framework.cloud.starter.version>1.0.0</datasource.framework.cloud.starter.version>
+        <core.framework.cloud.starter.version>1.0.0</core.framework.cloud.starter.version>
         <common.framework.cloud.starter.version>1.0.0</common.framework.cloud.starter.version>
         <mybatis.framework.cloud.starter.version>1.0.0</mybatis.framework.cloud.starter.version>
         <cache.framework.cloud.starter.version>1.0.0</cache.framework.cloud.starter.version>
@@ -27,6 +29,7 @@
         <stream.framework.cloud.starter.version>1.0.0</stream.framework.cloud.starter.version>
         <event.framework.cloud.starter.version>1.0.0</event.framework.cloud.starter.version>
         <logging.framework.cloud.starter.version>1.0.0</logging.framework.cloud.starter.version>
+        <seata.framework.cloud.starter.version>1.0.0</seata.framework.cloud.starter.version>
     </properties>
 
     <dependencyManagement>
