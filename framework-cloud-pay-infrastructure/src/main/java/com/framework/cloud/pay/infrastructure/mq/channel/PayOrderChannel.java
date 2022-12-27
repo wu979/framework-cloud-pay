@@ -12,7 +12,7 @@ import org.springframework.messaging.SubscribableChannel;
  */
 public interface PayOrderChannel {
 
-    String OUT = "pay-order-ouput-channel";
+    String OUT = "pay-order-output-channel";
 
     @Output(OUT)
     MessageChannel output();
