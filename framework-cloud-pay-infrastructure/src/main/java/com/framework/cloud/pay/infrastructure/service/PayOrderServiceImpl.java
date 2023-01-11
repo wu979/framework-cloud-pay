@@ -12,6 +12,7 @@ import com.framework.cloud.pay.common.vo.order.PayOrderPageVO;
 import com.framework.cloud.pay.domain.entity.PayOrder;
 import com.framework.cloud.pay.domain.repository.PayOrderRepository;
 import com.framework.cloud.pay.domain.service.PayOrderService;
+import com.framework.cloud.pay.infrastructure.mq.PayPublish;
 import lombok.AllArgsConstructor;
 import org.apache.shardingsphere.transaction.annotation.ShardingSphereTransactionType;
 import org.apache.shardingsphere.transaction.core.TransactionType;
@@ -30,6 +31,7 @@ import java.time.LocalDateTime;
 public class PayOrderServiceImpl implements PayOrderService {
 
     private final PayOrderRepository payOrderRepository;
+    private final PayPublish payPublish;
 
     @Override
     public PageVO<PayOrderPageVO> page(PayOrderPageDTO param) {
@@ -54,10 +56,13 @@ public class PayOrderServiceImpl implements PayOrderService {
         payOrder.setStatus(PayStatus.ALREADY_PAY);
         payOrder.setType(PayModeType.WX_APP);
         payOrder.setModeId(1111111L);
-        payOrder.setTradeId("11111111");
+        payOrder.setTradeId("trace-id" + RandomUtil.number(9));
         payOrder.setTradeStatus("1");
         payOrder.setRemarks("2");
-        return payOrderRepository.save(payOrder);
+        payPublish.publishPayOrder(payOrder.getOrderNum());
+        //if (payOrderRepository.save(payOrder)) {
+        //}
+        return true;
     }
 
 }
