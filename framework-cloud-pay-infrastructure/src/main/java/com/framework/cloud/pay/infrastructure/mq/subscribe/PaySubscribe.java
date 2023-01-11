@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
  * @author wusiwei
  */
 @Slf4j
-@Component
 @EnableBinding(PayOrderChannel.class)
 public class PaySubscribe {
 
