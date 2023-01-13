@@ -5,8 +5,6 @@ import com.framework.cloud.pay.infrastructure.mq.channel.PayOrderChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.stereotype.Component;
 
 /**
  * 支付领域事件订阅
@@ -18,8 +16,8 @@ import org.springframework.stereotype.Component;
 public class PaySubscribe {
 
     @StreamListener(PayOrderChannel.IN)
-    public void gatewayRouteEvent(@Payload String num) {
-        log.info("收到消息,num: {}, user: {}", num, UserContextHolder.getInstance().getUser());
+    public void gatewayRouteEvent(String message) {
+        log.info("收到消息,num: {}, user: {}", message, UserContextHolder.getInstance().getUser());
     }
 
 }
