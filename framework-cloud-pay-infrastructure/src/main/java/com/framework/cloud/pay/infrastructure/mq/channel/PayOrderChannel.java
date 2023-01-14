@@ -13,11 +13,10 @@ import org.springframework.messaging.SubscribableChannel;
 public interface PayOrderChannel {
 
     String OUT = "pay-order-output-channel";
+    String IN = "pay-order-input-channel";
 
     @Output(OUT)
     MessageChannel output();
-
-    String IN = "pay-order-input-channel";
 
     @Input(IN)
     SubscribableChannel input();

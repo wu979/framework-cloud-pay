@@ -19,8 +19,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 public class PaySubscribe {
 
     @StreamListener(PayOrderChannel.IN)
-    public void gatewayRouteEvent(@Payload StreamMessage<PayOrderMessage.OrderInsert> message) {
-
+    public void subscribePayOrder(@Payload StreamMessage<PayOrderMessage.OrderInsert> message) {
         log.info("收到消息,num: {}, user: {}", message, UserContextHolder.getInstance().getUser());
     }
 

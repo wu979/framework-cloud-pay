@@ -1,6 +1,7 @@
 package com.framework.cloud.pay.infrastructure.service;
 
 import com.framework.cloud.common.base.PageVO;
+import com.framework.cloud.common.base.StreamMessage;
 import com.framework.cloud.common.utils.CopierUtil;
 import com.framework.cloud.common.utils.RandomUtil;
 import com.framework.cloud.enums.pay.PayStatus;
@@ -8,6 +9,7 @@ import com.framework.cloud.enums.platform.PayModeType;
 import com.framework.cloud.mybatis.utils.IdUtil;
 import com.framework.cloud.pay.common.dto.order.PayOrderDTO;
 import com.framework.cloud.pay.common.dto.order.PayOrderPageDTO;
+import com.framework.cloud.pay.common.stream.PayOrderMessage;
 import com.framework.cloud.pay.common.vo.order.PayOrderInfoVO;
 import com.framework.cloud.pay.common.vo.order.PayOrderPageVO;
 import com.framework.cloud.pay.domain.entity.PayNotify;
@@ -66,14 +68,13 @@ public class PayOrderServiceImpl implements PayOrderService {
         payOrder.setTradeId("trace-id" + RandomUtil.number(9));
         payOrder.setTradeStatus("1");
         payOrder.setRemarks("2");
-        //payPublish.publishPayOrder(StreamMessage.build(new PayOrderMessage.OrderInsert(payOrder.getOrderNum())));
         if (payOrderRepository.save(payOrder)) {
             PayNotify payNotify = new PayNotify();
             payNotify.setPayOrderId(payOrder.getId());
             payNotify.setResource("1111");
             payNotifyRepository.save(payNotify);
         }
-        int i = 1/0;
+        payPublish.publishPayOrder(StreamMessage.build(new PayOrderMessage.OrderInsert(payOrder.getOrderNum())));
         return true;
     }
 
