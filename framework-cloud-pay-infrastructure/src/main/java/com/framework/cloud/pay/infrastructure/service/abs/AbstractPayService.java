@@ -3,6 +3,7 @@ package com.framework.cloud.pay.infrastructure.service.abs;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Pair;
 import cn.hutool.core.util.ObjectUtil;
+import com.framework.cloud.common.base.StreamMessage;
 import com.framework.cloud.common.exception.BizException;
 import com.framework.cloud.common.result.Result;
 import com.framework.cloud.common.result.ResultApi;
@@ -12,6 +13,7 @@ import com.framework.cloud.pay.common.dto.pay.PayDTO;
 import com.framework.cloud.pay.common.msg.PayMsg;
 import com.framework.cloud.pay.common.rpc.PayChannelInfoVO;
 import com.framework.cloud.pay.common.rpc.PayModeInfoVO;
+import com.framework.cloud.pay.common.stream.PayOrderMessage;
 import com.framework.cloud.pay.common.vo.pay.PayVO;
 import com.framework.cloud.pay.domain.entity.PayOrder;
 import com.framework.cloud.pay.domain.feign.PlatFormFeignService;
@@ -74,7 +76,7 @@ public abstract class AbstractPayService<R extends PayVO, T extends PayDTO, REQU
         if (!save) {
             throw new BizException(PayMsg.CREATE_PAY_ORDER_FAIL.getMsg());
         }
-        boolean publish = payPublish.publishPayOrder(payOrder.getNum());
+        boolean publish = payPublish.publishPayOrder(StreamMessage.build(new PayOrderMessage.OrderInsert(payOrder.getOrderNum())));
         if (!publish) {
             // todo redis 队列
         }

@@ -9,7 +9,6 @@ import com.framework.cloud.pay.common.dto.order.PayOrderPageDTO;
 import com.framework.cloud.pay.common.vo.order.PayOrderInfoVO;
 import com.framework.cloud.pay.common.vo.order.PayOrderPageVO;
 import com.framework.cloud.pay.domain.service.PayOrderService;
-import com.framework.cloud.pay.infrastructure.mq.PayPublish;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -34,9 +33,6 @@ public class PayOrderController {
     @Resource
     private PayOrderService payOrderService;
 
-    @Resource
-    private PayPublish payPublish;
-
     @ApiOperation(value = "支付订单列表")
     @PostMapping(value = "/page")
     public Result<PageVO<PayOrderPageVO>> page(@ApiParam("条件") @RequestBody PayOrderPageDTO param) {
@@ -46,7 +42,6 @@ public class PayOrderController {
     @ApiOperation(value = "支付订单详情")
     @GetMapping(value = "/{id}/info")
     public Result<PayOrderInfoVO> info(@ApiParam("主键") @PathVariable("id") Long id) {
-        payPublish.publishPayOrder("1111111111");
         return R.success(payOrderService.info(id));
     }
 
